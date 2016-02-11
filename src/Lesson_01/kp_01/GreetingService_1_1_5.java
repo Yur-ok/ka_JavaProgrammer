@@ -1,4 +1,4 @@
-package Lesson_01;
+package Lesson_01.kp_01;
 
 /**
  * Created by Юрий on 10.02.2016.
