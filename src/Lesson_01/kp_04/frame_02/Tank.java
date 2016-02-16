@@ -85,24 +85,25 @@ public class Tank {
 
     public void fire() throws Exception {
 
-        bulletX = tankX + 25;
-        bulletY = tankY + 25;
+        Bullet bullet = new Bullet();
+        bullet.setBulletX(tankX + 25);
+        bullet.setBulletY(tankY + 25);
 
-        while ((bulletX > -14 && bulletX < 592) && (bulletY > -14 && bulletY < 592)) {
+        while ((bullet.getBulletX() > -14 && bullet.getBulletX() < 592) && (bullet.getBulletY() > -14 && bullet.getBulletY() < 592)) {
             if (tankDirection == UP) {
-                bulletY -= 1;
+                bullet.setBulletY(-1);
             } else if (tankDirection == DOWN) {
-                bulletY += 1;
+                bullet.setBulletY(+1);
             } else if (tankDirection == LEFT) {
-                bulletX -= 1;
+                bullet.setBulletX(-1);
             } else if (tankDirection == RIGHT) {
-                bulletX += 1;
+                bullet.setBulletX(+1);
             }
             repaint();
             Thread.sleep(bulletSpeed);
             if (processInterception("bullet")) {
-                bulletX = -100;
-                bulletY = -100;
+                bullet.setBulletX(-100);
+                bullet.setBulletY(-100);
                 amountOfBriks--;
             }
         }
