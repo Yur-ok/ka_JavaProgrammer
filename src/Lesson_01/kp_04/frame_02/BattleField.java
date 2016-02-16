@@ -25,8 +25,27 @@ public class BattleField {
             {"B", " ", " ", "B", " ", "B", " ", " ", "B"}
     };
 
-    private final boolean COLORDED_MODE = false;
-    private final int BF_WIDTH = 576;
-    private final int BF_HEIGHT = 576;
+    private int amountOfBriks;
+
+    public int getAmountOfBriks() {
+        return amountOfBriks;
+    }
+
+    public void setAmountOfBriks(int amountOfBriks) {
+        this.amountOfBriks = amountOfBriks;
+    }
+
+    public void numbersOFBriks() {
+        int count = 0;
+        for (int i = 0; i <= battleField.length - 1; i++) {
+            for (int j = 0; j <= battleField[i].length - 1; j++) {
+                if (battleField[i][j].equals("B")) {
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+        setAmountOfBriks(count);
+    }
 
 }
