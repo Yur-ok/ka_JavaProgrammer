@@ -5,9 +5,9 @@ package Lesson_01.kp_04.frame_04;
  */
 public class Bullet {
 
+    private int speed = 5;
     private int x;
     private int y;
-    private int speed;
     private int direction;
 
 
@@ -15,16 +15,8 @@ public class Bullet {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public int getSpeed() {
@@ -35,26 +27,12 @@ public class Bullet {
         return direction;
     }
 
-    public void setDirection(int direction) {
-        this.direction = direction;
+    public void updateX(int x) {
+        this.x += x;
     }
 
-    public int updateX(int x) {
-        if (direction == 3) {
-            this.x -= x;
-        } else if (direction == 4) {
-            this.x += x;
-        }
-        return this.x;
-    }
-
-    public int updateY(int y) {
-        if (direction == 1) {
-            this.y -= y;
-        } else if (direction == 2) {
-            this.y += y;
-        }
-        return this.y;
+    public void updateY(int y) {
+        this.y += y;
     }
 
     public void destroy() {
