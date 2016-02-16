@@ -21,23 +21,39 @@ public class BattleField {
     };
 
 
-    public String scanQuadrant(int v, int h) {
+    public BattleField() {
 
-        return (v - 1) * 64 + "_" + (h - 1) * 64;
     }
 
-    public void updateQuadrant(int x, int y, String str) {
+    public BattleField(String[][] battleField) {
+        this.battleField = battleField;
+    }
 
-        battleField[x][y] = str;
+    public String scanQuadrant(int v, int h) {
+
+        return battleField[v][h];
+    }
+
+    public void updateQuadrant(int v, int h, String str) {
+
+        battleField[v][h] = str;
     }
 
     public int getDimensionX() {
 
-        return BF_WIDTH / 64;
+        return battleField.length;
     }
 
     public int getDimensionY() {
 
-        return BF_HEIGHT / 64;
+        return battleField.length;
+    }
+
+    public int getBF_WIDTH() {
+        return BF_WIDTH;
+    }
+
+    public int getBF_HEIGHT() {
+        return BF_HEIGHT;
     }
 }
