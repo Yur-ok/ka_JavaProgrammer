@@ -2,6 +2,7 @@ package Lesson_01.kp_04.frame_08;
 
 import Lesson_01.kp_04.frame_04.Bullet;
 import Lesson_01.kp_04.frame_06.BattleField;
+import Lesson_01.kp_04.frame_12.Tank;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +38,7 @@ public class ActionField extends JPanel {
         String coord = null;
 
         if (name.equals("tank")) {
-            coord = getQuadrant(tankX, tankY);
+            coord = getQuadrant(tank.getX(), tank.getY());
         } else {
             coord = getQuadrant(bullet.getX(), bullet.getY());
         }
@@ -126,17 +127,17 @@ public class ActionField extends JPanel {
         }
 
         g.setColor(new Color(255, 0, 0));
-        g.fillRect(tankX, tankY, 64, 64);
+        g.fillRect(tank.getX(), tank.getY(), 64, 64);
 
         g.setColor(new Color(0, 255, 0));
-        if (tankDirection == 1) {
-            g.fillRect(tankX + 20, tankY, 24, 34);
-        } else if (tankDirection == 2) {
-            g.fillRect(tankX + 20, tankY + 30, 24, 34);
-        } else if (tankDirection == 3) {
-            g.fillRect(tankX, tankY + 20, 34, 24);
+        if (tank.getDirection() == 1) {
+            g.fillRect(tank.getX() + 20, tank.getY(), 24, 34);
+        } else if (tank.getDirection() == 2) {
+            g.fillRect(tank.getX() + 20, tank.getY() + 30, 24, 34);
+        } else if (tank.getDirection() == 3) {
+            g.fillRect(tank.getX(), tank.getY() + 20, 34, 24);
         } else {
-            g.fillRect(tankX + 30, tankY + 20, 34, 24);
+            g.fillRect(tank.getX() + 30, tank.getY() + 20, 34, 24);
         }
 
         g.setColor(new Color(255, 255, 0));
