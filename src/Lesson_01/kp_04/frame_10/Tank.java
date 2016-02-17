@@ -16,6 +16,9 @@ public class Tank {
     private ActionField af;
     private BattleField bf;
 
+    public Tank() {
+    }
+
     public Tank(ActionField af, BattleField bf) {
         this(af, bf, 128, 512, 1);
     }
