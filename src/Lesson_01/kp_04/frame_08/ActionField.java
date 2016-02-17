@@ -1,5 +1,8 @@
 package Lesson_01.kp_04.frame_08;
 
+import Lesson_01.kp_04.frame_04.Bullet;
+import Lesson_01.kp_04.frame_06.BattleField;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,20 +12,20 @@ import java.awt.*;
 public class ActionField extends JPanel {
 
     private final boolean COLORDED_MODE = false;
-    private String[][] battlleField;
-    private boolean tank;
-    private boolean bullet;
+    private BattleField battlleField;
+    private Tank tank;
+    private Bullet bullet;
 
 
-    public void processMove(boolean tank) {
-
-    }
-
-    public void processTurn(boolean tank) {
+    public void processMove(Tank tank) throws Exception {
 
     }
 
-    public void processFire(boolean bullet) {
+    public void processTurn(Tank tank) throws Exception {
+
+    }
+
+    public void processFire(Bullet bullet) throws Exception {
 
     }
 
@@ -30,36 +33,36 @@ public class ActionField extends JPanel {
 
     }
 
-    public boolean processInterception(String name) throws Exception {
+    private boolean processInterception(String name) throws Exception {
         String coord = null;
 
         if (name.equals("tank")) {
             coord = getQuadrant(tankX, tankY);
         } else {
-            coord = getQuadrant(bulletX, bulletY);
+            coord = getQuadrant(bullet.getX(), bullet.getY());
         }
 
         int x = Integer.parseInt(coord.substring(coord.indexOf("_") + 1));
         int y = Integer.parseInt(coord.substring(0, coord.indexOf("_")));
 
-        if (name.equals("tank")) {
-            if (tankDirection == RIGHT && !battleField[y][x + 1].trim().isEmpty()) {
-                return true;
-            } else if (tankDirection == LEFT && !battleField[y][x - 1].trim().isEmpty()) {
-                return true;
-            } else if (tankDirection == DOWN && !battleField[y + 1][x].trim().isEmpty()) {
-                return true;
-            } else if (tankDirection == UP && !battleField[y - 1][x].trim().isEmpty()) {
-                return true;
-            }
-        } else {
+//        if (name.equals("tank")) {
+//            if (tankDirection == RIGHT && !battleField[y][x + 1].trim().isEmpty()) {
+//                return true;
+//            } else if (tankDirection == LEFT && !battleField[y][x - 1].trim().isEmpty()) {
+//                return true;
+//            } else if (tankDirection == DOWN && !battleField[y + 1][x].trim().isEmpty()) {
+//                return true;
+//            } else if (tankDirection == UP && !battleField[y - 1][x].trim().isEmpty()) {
+//                return true;
+//            }
+//        } else {
             if (x >= 0 && x <= 8 && y >= 0 && y <= 8) {
-                if (!battleField[y][x].trim().isEmpty()) {
-                    battleField[y][x] = "";
+                if (battlleField.scanQuadrant(y, x).trim().isEmpty()) {
+                    battlleField.updateQuadrant(y, x, "");
                     return true;
                 }
             }
-        }
+//        }
         return false;
     }
 
@@ -72,9 +75,14 @@ public class ActionField extends JPanel {
     }
 
     public ActionField() throws Exception {
+
+        battlleField = new BattleField();
+        tank = new Tank();
+        bullet = new Bullet(-100, -100, -1);
+
         JFrame frame = new JFrame("BATTLE FIELD, DAY 2");
         frame.setLocation(750, 150);
-        frame.setMinimumSize(new Dimension(BF_WIDTH + 16, BF_HEIGHT + 39));
+        frame.setMinimumSize(new Dimension(battlleField.getBF_WIDTH() + 16, battlleField.getBF_HEIGHT() + 39));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.pack();
@@ -104,9 +112,9 @@ public class ActionField extends JPanel {
             }
         }
 
-        for (int j = 0; j < battleField.length; j++) {
-            for (int k = 0; k < battleField.length; k++) {
-                if (battleField[j][k].equals("B")) {
+        for (int j = 0; j < battlleField.getDimensionY(); j++) {
+            for (int k = 0; k < battlleField.getDimensionX(); k++) {
+                if (battlleField.scanQuadrant(j, k).equals("B")) {
                     String coordinates = getQuadrantXY(j + 1, k + 1);
                     int separator = coordinates.indexOf("_");
                     int y = Integer.parseInt(coordinates.substring(0, separator));
@@ -132,6 +140,6 @@ public class ActionField extends JPanel {
         }
 
         g.setColor(new Color(255, 255, 0));
-        g.fillRect(bulletX, bulletY, 14, 14);
+        g.fillRect(bullet.getX(), bullet.getY(), 14, 14);
     }
 }
