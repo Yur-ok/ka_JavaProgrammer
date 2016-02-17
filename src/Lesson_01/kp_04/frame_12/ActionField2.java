@@ -1,4 +1,4 @@
-package Lesson_01.kp_04.frame_08;
+package Lesson_01.kp_04.frame_12;
 
 import Lesson_01.kp_04.frame_04.Bullet;
 import Lesson_01.kp_04.frame_06.BattleField;
@@ -10,10 +10,10 @@ import java.awt.*;
 /**
  * Created by Юрий on 12.02.2016.
  */
-public class ActionField extends JPanel {
+public class ActionField2 extends JPanel {
 
     private final boolean COLORDED_MODE = false;
-    private BattleField battlleField;
+    private BattleField battleField;
     private Tank tank;
     private Bullet bullet;
 
@@ -57,12 +57,12 @@ public class ActionField extends JPanel {
 //                return true;
 //            }
 //        } else {
-            if (x >= 0 && x <= 8 && y >= 0 && y <= 8) {
-                if (battlleField.scanQuadrant(y, x).trim().isEmpty()) {
-                    battlleField.updateQuadrant(y, x, "");
-                    return true;
-                }
+        if (x >= 0 && x <= 8 && y >= 0 && y <= 8) {
+            if (battleField.scanQuadrant(y, x).trim().isEmpty()) {
+                battleField.updateQuadrant(y, x, "");
+                return true;
             }
+        }
 //        }
         return false;
     }
@@ -75,15 +75,15 @@ public class ActionField extends JPanel {
         return (v - 1) * 64 + "_" + (h - 1) * 64;
     }
 
-    public ActionField() throws Exception {
+    public ActionField2() throws Exception {
 
-        battlleField = new BattleField();
+        battleField = new BattleField();
         tank = new Tank();
         bullet = new Bullet(-100, -100, -1);
 
         JFrame frame = new JFrame("BATTLE FIELD, DAY 2");
         frame.setLocation(750, 150);
-        frame.setMinimumSize(new Dimension(battlleField.getBF_WIDTH() + 16, battlleField.getBF_HEIGHT() + 39));
+        frame.setMinimumSize(new Dimension(battleField.getBF_WIDTH() + 16, battleField.getBF_HEIGHT() + 39));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.pack();
@@ -113,9 +113,9 @@ public class ActionField extends JPanel {
             }
         }
 
-        for (int j = 0; j < battlleField.getDimensionY(); j++) {
-            for (int k = 0; k < battlleField.getDimensionX(); k++) {
-                if (battlleField.scanQuadrant(j, k).equals("B")) {
+        for (int j = 0; j < battleField.getDimensionY(); j++) {
+            for (int k = 0; k < battleField.getDimensionX(); k++) {
+                if (battleField.scanQuadrant(j, k).equals("B")) {
                     String coordinates = getQuadrantXY(j + 1, k + 1);
                     int separator = coordinates.indexOf("_");
                     int y = Integer.parseInt(coordinates.substring(0, separator));

@@ -1,4 +1,4 @@
-package Lesson_01.kp_04.frame_12;
+package Lesson_01.kp_04.frame_10;
 
 import Lesson_01.kp_04.frame_04.Bullet;
 import Lesson_01.kp_04.frame_06.BattleField;
@@ -8,10 +8,6 @@ import Lesson_01.kp_04.frame_08.ActionField;
  * Created by Юрий on 12.02.2016.
  */
 public class Tank {
-    private int UP = 1;
-    private int DOWN = 2;
-    private int LEFT = 3;
-    private int RIGHT = 4;
 
     private int direction;
     private int x;
