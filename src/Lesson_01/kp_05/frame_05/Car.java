@@ -17,7 +17,14 @@ public class Car {
     private double acceleration;
 
     public Car() {
-
+        manufactureName = null;
+        modelName = null;
+        doorNum = 0;
+        seatNum = 0;
+        colorDayLigth = null;
+        colorStopLigth = null;
+        maxSpeed = 0;
+        acceleration = 0;
     }
 
     public Car(String manufactureName, String modelName, int maxSpeed, double acceleration, Colors colors) {
