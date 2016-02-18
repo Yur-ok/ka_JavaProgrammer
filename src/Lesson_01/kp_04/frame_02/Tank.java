@@ -72,8 +72,8 @@ public class Tank {
                 System.out.println("[move right] direction: " + direction + " tankX: " + tankX + ", tankY: " + tankY);
             }
             covered += step;
-            repaint();
-            Thread.sleep(speed);
+//            repaint();
+//            Thread.sleep(speed);
         }
     }
 
@@ -99,15 +99,15 @@ public class Tank {
             } else if (tankDirection == RIGHT) {
                 bullet.setBulletX(+1);
             }
-            repaint();
-            Thread.sleep(bulletSpeed);
-            if (processInterception("bullet")) {
+//            repaint();
+//            Thread.sleep(bulletSpeed);
+//            if (processInterception("bullet")) {
                 bullet.setBulletX(-100);
                 bullet.setBulletY(-100);
-                amountOfBriks--;
+//                amountOfBriks--;
             }
         }
-    }
+//    }
 
 
     public void getTankPosition() {

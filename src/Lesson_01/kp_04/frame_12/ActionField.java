@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Created by Юрий on 12.02.2016.
  */
-public class ActionField2 extends JPanel {
+public class ActionField extends JPanel {
 
     private final int UP = 1;
     private final int DOWN = 2;
@@ -63,10 +63,13 @@ public class ActionField2 extends JPanel {
     }
 
     public void processTurn(Tank tank) throws Exception {
-        tank.getDirection();
+        repaint();
     }
 
     public void processFire(Bullet bullet) throws Exception {
+
+        bullet.updateX(tank.getX() + 25);
+        bullet.updateY(tank.getY() + 25);
 
         while ((bullet.getX() > -14 && bullet.getX() < 592) && (bullet.getY() > -14 && bullet.getY() < 592)) {
             if (tank.getDirection() == UP) {
@@ -89,7 +92,10 @@ public class ActionField2 extends JPanel {
     }
 
     public void runTheGame() throws Exception {
-
+        tank.fire();
+        tank.fire();
+        tank.fire();
+        tank.move();
     }
 
     private boolean processInterception(String name) throws Exception {
@@ -133,10 +139,10 @@ public class ActionField2 extends JPanel {
         return (v - 1) * 64 + "_" + (h - 1) * 64;
     }
 
-    public ActionField2() throws Exception {
+    public ActionField() throws Exception {
 
         battleField = new BattleField();
-        tank = new Tank();
+        tank = new Tank(this, battleField);
         bullet = new Bullet(-100, -100, -1);
 
         JFrame frame = new JFrame("BATTLE FIELD, DAY 2");

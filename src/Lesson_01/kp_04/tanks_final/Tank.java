@@ -1,8 +1,4 @@
-package Lesson_01.kp_04.frame_10;
-
-import Lesson_01.kp_04.frame_04.Bullet;
-import Lesson_01.kp_04.frame_06.BattleField;
-import Lesson_01.kp_04.frame_12.ActionField;
+package Lesson_01.kp_04.tanks_final;
 
 /**
  * Created by Юрий on 12.02.2016.
@@ -27,7 +23,6 @@ public class Tank {
         this.y = y;
         this.direction = direction;
     }
-
 
     public int getDirection() {
         return direction;
@@ -68,7 +63,7 @@ public class Tank {
     }
 
     public void clean() throws Exception {
-
+        // TODO: 18.02.2016
     }
 
     public void updateX(int x) {
