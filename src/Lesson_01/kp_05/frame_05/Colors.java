@@ -5,6 +5,5 @@ package Lesson_01.kp_05.frame_05;
  */
 public enum Colors {
     LIME, YELLOW, GREENYELLOW, SKYBLUE, INDIGO, VIOLET, BLACK, PURPLE, RED, CORAL, BROWN, GREEN, MAGENTA, DARKBLUE,
-    BLUE, ORANGE
-
+    BLUE, ORANGE;
 }
