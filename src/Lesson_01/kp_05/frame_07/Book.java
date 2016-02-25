@@ -1,4 +1,4 @@
-package Lesson_01.kp_05.frame_06;
+package Lesson_01.kp_05.frame_07;
 
 /**
  * Created by Юрий on 18.02.2016.

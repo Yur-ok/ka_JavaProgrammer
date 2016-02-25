@@ -1,4 +1,4 @@
-package Lesson_01.kp_05.frame_06_teachVer;
+package Lesson_01.kp_05.frame_07_teachVer;
 
 /**
  * Created by Юрий on 18.02.2016.
