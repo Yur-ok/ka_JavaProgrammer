@@ -1,4 +1,4 @@
-package Lesson_01.kp_05.frame_06;
+package Lesson_01.kp_05.frame_06_teachVer;
 
 /**
  * Created by Юрий on 18.02.2016.
@@ -8,8 +8,8 @@ public enum Genre {
 
     private int id;
 
-
     Genre(int i) {
+        this.id = i;
     }
 
     public int getId() {
