@@ -1,4 +1,4 @@
-package Lesson_01.kp_05.frame_09;
+package Lesson_01.kp_05.frame_09_tanks_v1_2;
 
 import javax.swing.*;
 import java.awt.*;
