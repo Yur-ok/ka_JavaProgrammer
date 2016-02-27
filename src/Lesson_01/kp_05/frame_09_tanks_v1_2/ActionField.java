@@ -96,35 +96,19 @@ public class ActionField extends JPanel {
     private boolean processInterception() throws Exception {
         String coord;
 
-//        if (name.equals("tank")) {
-//            coord = getQuadrant(tank.getX(), tank.getY());
-//        } else {
         coord = getQuadrant(bullet.getX(), bullet.getY());
-//        }
 
 //        int x = Integer.parseInt(coord.substring(coord.indexOf("_") + 1));
 //        int y = Integer.parseInt(coord.substring(0, coord.indexOf("_")));
         int x = Integer.parseInt(coord.split("_")[1]);
         int y = Integer.parseInt(coord.split("_")[0]);
 
-//        if (name.equals("tank")) {
-//            if (tank.turn(RIGHT) && !battleField.scanQuadrant(y, x + 1).trim().isEmpty()) {
-//                return true;
-//            } else if (tank.turn(LEFT) && !battleField.scanQuadrant(y, x - 1).trim().isEmpty()) {
-//                return true;
-//            } else if (tank.turn(DOWN) && !battleField.scanQuadrant(y + 1, x).trim().isEmpty()) {
-//                return true;
-//            } else if (tank.turn(UP) && !battleField.scanQuadrant(y - 1, x).trim().isEmpty()) {
-//                return true;
-//            }
-//        } else {
         if (x >= 0 && x < 9 && y >= 0 && y < 9) {
             if (!battleField.scanQuadrant(y, x).trim().isEmpty()) {
                 battleField.updateQuadrant(y, x, "");
                 return true;
             }
         }
-//        }
         return false;
     }
 
