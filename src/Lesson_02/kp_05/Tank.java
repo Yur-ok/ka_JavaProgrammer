@@ -27,7 +27,7 @@ public class Tank {
     private Direction direction;
     private int x;
     private int y;
-    private int speed = 10;
+    protected int speed = 10;
     private ActionField af;
     private BattleField bf;
 
