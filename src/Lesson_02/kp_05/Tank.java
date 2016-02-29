@@ -35,7 +35,7 @@ public class Tank {
     }
 
     public Tank(ActionField af, BattleField bf) {
-        this(af, bf, 128, 512, direction.UP);
+        this(af, bf, 128, 512, Direction.UP);
     }
 
     public Tank(ActionField af, BattleField bf, int x, int y, Direction direction) {
@@ -68,8 +68,7 @@ public class Tank {
     }
 
     public void move() throws Exception {
-//        af.processMove(this);
-        System.out.println("Tank is moving with " + getSpeed() + " km/h.");
+        af.processMove(this);
     }
 
     public void fire() throws Exception {
