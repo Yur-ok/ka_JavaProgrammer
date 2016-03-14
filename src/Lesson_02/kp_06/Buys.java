@@ -5,9 +5,5 @@ package Lesson_02.kp_06;
  */
 public class Buys {
 
-    private String name;
-    private int amount;
-    private double price;
-    private int discount;
 
 }
