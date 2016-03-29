@@ -6,7 +6,6 @@ package Lesson_02.kp_06;
 public class Customers {
 
     private String name;
-    private String dateOfBuy;
-
-
+    private String typeBird;
+    private int amount;
 }

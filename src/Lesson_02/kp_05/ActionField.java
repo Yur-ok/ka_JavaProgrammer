@@ -99,8 +99,8 @@ public class ActionField extends JPanel {
 
         coord = getQuadrant(bullet.getX(), bullet.getY());
 
-//        int x = Integer.parseInt(coord.substring(coord.indexOf("_") + 1));
-//        int y = Integer.parseInt(coord.substring(0, coord.indexOf("_")));
+//        int x = IntegerExt.parseInt(coord.substring(coord.indexOf("_") + 1));
+//        int y = IntegerExt.parseInt(coord.substring(0, coord.indexOf("_")));
         int x = Integer.parseInt(coord.split("_")[1]);
         int y = Integer.parseInt(coord.split("_")[0]);
 

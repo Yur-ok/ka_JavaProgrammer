@@ -9,6 +9,7 @@ public class Birds {
     private int amount;
     private double price;
     private int discount;
+    private Transaction transaction;
 
     public Birds() {
 
@@ -46,4 +47,20 @@ public class Birds {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String[][] getCatalog() {
+        return catalog;
+    }
+
+    private String[][] catalog = {{"Day birds: ", "Eagle", "Falcon"}, {"Night birds: ", "Owl"}};
+
+    public void printCatalog() {
+        for (int i = 0; i < catalog.length; i++) {
+            for (int j = 0; j < catalog[i].length; j++) {
+                System.out.print(catalog[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
 }

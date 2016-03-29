@@ -5,7 +5,6 @@ package Lesson_02.kp_06;
  */
 public class Eagle extends Birds {
 
-
     public Eagle() {
         setType("Eagle");
         setAmount(10);
