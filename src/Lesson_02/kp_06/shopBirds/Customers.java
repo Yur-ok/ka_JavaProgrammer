@@ -1,4 +1,4 @@
-package Lesson_02.kp_06;
+package Lesson_02.kp_06.shopBirds;
 
 /**
  * Created by Юрий on 08.03.2016.
