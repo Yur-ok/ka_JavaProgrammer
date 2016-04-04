@@ -1,5 +1,7 @@
 package Lesson_02.kp_06.tanksGame;
 
+import java.util.Random;
+
 /**
  * Created by Юрий on 12.02.2016.
  */
@@ -22,7 +24,6 @@ public class BattleField {
 
 
     public BattleField() {
-
     }
 
     public BattleField(String[][] battleField) {
@@ -51,5 +52,31 @@ public class BattleField {
 
     public int getBF_HEIGHT() {
         return BF_HEIGHT;
+    }
+
+
+    public String getAggressorLocation() {
+        Random r = new Random();
+        int num = r.nextInt(3);
+        String res;
+        String[] freeCells = new String[3];
+        int idx = 0;
+
+        for (int i = 0; i < battleField[0].length; i++) {
+            if (scanQuadrant(0, i).trim().isEmpty()) {
+                freeCells[idx] = "0_" + (i * 64);
+                idx++;
+            }
+        }
+
+        if (num == 0) {
+            res = freeCells[0];
+        } else if (num == 1) {
+            res = freeCells[1];
+        } else {
+            res = freeCells[2];
+        }
+
+        return res;
     }
 }

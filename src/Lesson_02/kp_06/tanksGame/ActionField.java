@@ -16,14 +16,14 @@ public class ActionField extends JPanel {
 
     private final boolean COLORDED_MODE = false;
     private BattleField battleField;
-    private Tank tank;
-    private Aggressor aggressor;
+    private Tank defender;
+    private Tank aggressor;
     private Bullet bullet;
     private int amountOfBriks;
 
 
     public void processMove(Tank tank) throws Exception {
-        this.tank = tank;
+        this.defender = tank;
         Direction direction = tank.getDirection();
         int step = 1;
         int covered = 0;
@@ -71,13 +71,13 @@ public class ActionField extends JPanel {
         this.bullet = bullet;
 
         while ((bullet.getX() > -14 && bullet.getX() < 592) && (bullet.getY() > -14 && bullet.getY() < 592)) {
-            if (tank.getDirection() == Direction.UP) {
+            if (defender.getDirection() == Direction.UP) {
                 bullet.updateY(-1);
-            } else if (tank.getDirection() == Direction.DOWN) {
+            } else if (defender.getDirection() == Direction.DOWN) {
                 bullet.updateY(1);
-            } else if (tank.getDirection() == Direction.LEFT) {
+            } else if (defender.getDirection() == Direction.LEFT) {
                 bullet.updateX(-1);
-            } else if (tank.getDirection() == Direction.RIGHT) {
+            } else if (defender.getDirection() == Direction.RIGHT) {
                 bullet.updateX(1);
             }
             Thread.sleep(bullet.getSPEED());
@@ -93,7 +93,6 @@ public class ActionField extends JPanel {
 //        clean();
 //        moveRandom();
 //        createAggressor(aggressor);
-        createAggressor(aggressor);
     }
 
     private boolean processInterception() throws Exception {
@@ -135,23 +134,23 @@ public class ActionField extends JPanel {
             i = r.nextInt(5);
             if (i > 0) {
                 if (i == 0) {
-                    tank.turn(Direction.NONE);
+                    defender.turn(Direction.NONE);
                 } else if (i == 1) {
-                    tank.turn(Direction.UP);
+                    defender.turn(Direction.UP);
                 } else if (i == 2) {
-                    tank.turn(Direction.DOWN);
+                    defender.turn(Direction.DOWN);
                 } else if (i == 3) {
-                    tank.turn(Direction.LEFT);
+                    defender.turn(Direction.LEFT);
                 } else {
-                    tank.turn(Direction.RIGHT);
+                    defender.turn(Direction.RIGHT);
                 }
-                tank.move();
+                defender.move();
             }
         }
     }
 
     public void moveToQuadrant(Tank tank, int v, int h) throws Exception {
-        this.tank = tank;
+        this.defender = tank;
 
         String coordinates = getQuadrantXY(v, h);
         int separator = coordinates.indexOf("_");
@@ -198,21 +197,21 @@ public class ActionField extends JPanel {
 
     public void clean() throws Exception {
         long start = System.currentTimeMillis();
-        tank.moveToQuadrant(1, 1);
+        defender.moveToQuadrant(1, 1);
         for (int i = 0, k = 2; i < battleField.getDimensionX(); i++, k++) {
             for (int j = 1; j < battleField.getDimensionY(); j++) {
                 if (battleField.scanQuadrant(i, j).trim().equals("B")) {
-                    tank.turn(Direction.RIGHT);
-                    tank.fire();
+                    defender.turn(Direction.RIGHT);
+                    defender.fire();
                 }
             }
             if (k <= 9) {
-                tank.moveToQuadrant(k, 1);
+                defender.moveToQuadrant(k, 1);
                 System.out.println("Move to " + k + ", 1");
             }
         }
         if (amountOfBriks == 0) {
-            tank.moveToQuadrant(5, 5);
+            defender.moveToQuadrant(5, 5);
             System.out.println("Battle Field is clean!!!");
             long finish = System.currentTimeMillis() - start;
             System.out.println(finish / 1000);
@@ -232,31 +231,15 @@ public class ActionField extends JPanel {
         return amountOfBriks = count;
     }
 
-    private void createAggressor(Aggressor aggressor) throws Exception {
-        this.aggressor = aggressor;
-        Random r = new Random();
-        int place = r.nextInt(3);
-        int a = 64;
-        int b = 256;
-        int c = 448;
-        int newX;
-
-        if (place == 0) {
-            newX = a;
-        } else if (place == 1) {
-            newX = b;
-        } else {
-            newX = c;
-        }
-        aggressor.x = newX;
-    }
-
 
     public ActionField() throws Exception {
 
         battleField = new BattleField();
-        tank = new Tank(this, battleField);
-        aggressor = new Aggressor(this, battleField, 64, 0, Direction.DOWN);
+        defender = new Tank(this, battleField);
+
+        String location = battleField.getAggressorLocation();
+        aggressor = new Tank(this, battleField, Integer.parseInt(location.split("_")[1]),
+                Integer.parseInt(location.split("_")[0]), Direction.DOWN);
         bullet = new Bullet(-100, -100, Direction.NONE);
 
         JFrame frame = new JFrame("BATTLE FIELD, DAY 2");
@@ -306,26 +289,26 @@ public class ActionField extends JPanel {
 
         //defender
         g.setColor(new Color(34, 255, 18));
-        g.fillRect(tank.getX(), tank.getY(), 64, 64);
-
-        //aggressor
-        g.setColor(new Color(255, 122, 36));
-        g.fillRect(aggressor.getX(), aggressor.getY(), 64, 64);
+        g.fillRect(defender.getX(), defender.getY(), 64, 64);
 
         //defender gun
-        g.setColor(new Color(141, 0, 255));
-        if (tank.getDirection() == Direction.UP) {
-            g.fillRect(tank.getX() + 20, tank.getY(), 24, 34);
-        } else if (tank.getDirection() == Direction.DOWN) {
-            g.fillRect(tank.getX() + 20, tank.getY() + 30, 24, 34);
-        } else if (tank.getDirection() == Direction.LEFT) {
-            g.fillRect(tank.getX(), tank.getY() + 20, 34, 24);
+        g.setColor(new Color(255, 40, 0));
+        if (defender.getDirection() == Direction.UP) {
+            g.fillRect(defender.getX() + 20, defender.getY(), 24, 34);
+        } else if (defender.getDirection() == Direction.DOWN) {
+            g.fillRect(defender.getX() + 20, defender.getY() + 30, 24, 34);
+        } else if (defender.getDirection() == Direction.LEFT) {
+            g.fillRect(defender.getX(), defender.getY() + 20, 34, 24);
         } else {
-            g.fillRect(tank.getX() + 30, tank.getY() + 20, 34, 24);
+            g.fillRect(defender.getX() + 30, defender.getY() + 20, 34, 24);
         }
 
-        //aggressor gun
+        //aggressor
         g.setColor(new Color(255, 40, 0));
+        g.fillRect(aggressor.getX(), aggressor.getY(), 64, 64);
+
+        //aggressor gun
+        g.setColor(new Color(34, 255, 18));
         if (aggressor.getDirection() == Direction.UP) {
             g.fillRect(aggressor.getX() + 20, aggressor.getY(), 24, 34);
         } else if (aggressor.getDirection() == Direction.DOWN) {
