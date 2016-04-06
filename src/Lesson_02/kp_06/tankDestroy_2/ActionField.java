@@ -90,22 +90,15 @@ public class ActionField extends JPanel {
     }
 
     public void runTheGame() throws Exception {
-        moveToQuadrant(defender, 1, 1);
-        defender.turn(Direction.RIGHT);
-        while (true) {
-            defender.fire();
-            destroy();
-        }
-//        clean();
-//        moveRandom();
+//        moveToQuadrant(defender, 0, 0);
+//        defender.turn(Direction.RIGHT);
+
     }
 
     private boolean processInterception() throws Exception {
         String bulletCoord;
-        String aggressorCoord;
 
         bulletCoord = getQuadrant(bullet.getX(), bullet.getY());
-        aggressorCoord = getQuadrant(aggressor.getX(), aggressor.getY());
 
 //        int x = Integer.parseInt(bulletCoord.substring(bulletCoord.indexOf("_") + 1));
 //        int y = Integer.parseInt(bulletCoord.substring(0, bulletCoord.indexOf("_")));
@@ -119,11 +112,33 @@ public class ActionField extends JPanel {
             }
         }
 
-        if (bulletCoord.equals(aggressorCoord)) {
+        //check aggressor
+        if (checkInterception(getQuadrant(aggressor.getX(), aggressor.getY()), bulletCoord)) {
             aggressor.destroy();
             return true;
         }
 
+        //check defender
+        if (checkInterception(getQuadrant(defender.getX(), defender.getY()), bulletCoord)) {
+            defender.destroy();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkInterception(String tankCoord, String bulletCoord) {
+
+        int oy = Integer.parseInt(tankCoord.split("_")[0]);
+        int ox = Integer.parseInt(tankCoord.split("_")[1]);
+
+        int qy = Integer.parseInt(bulletCoord.split("_")[0]);
+        int qx = Integer.parseInt(bulletCoord.split("_")[1]);
+
+        if (oy >= 0 && oy < 9 && ox >= 0 && ox < 9) {
+            if (oy == qy && ox == qx) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -131,7 +146,7 @@ public class ActionField extends JPanel {
         return y / 64 + "_" + x / 64;
     }
 
-    public String getQuadrantXY(int v, int h) {
+    public String getQuadrantYX(int v, int h) {
         if (v > 9) {
             v = 9;
         } else if (h > 9) {
@@ -165,7 +180,7 @@ public class ActionField extends JPanel {
     public void moveToQuadrant(Tank tank, int v, int h) throws Exception {
         this.defender = tank;
 
-        String coordinates = getQuadrantXY(v, h);
+        String coordinates = getQuadrantYX(v, h);
         int separator = coordinates.indexOf("_");
         int y = Integer.parseInt(coordinates.substring(0, separator));
         int x = Integer.parseInt(coordinates.substring(separator + 1));
@@ -299,7 +314,7 @@ public class ActionField extends JPanel {
         for (int j = 0; j < battleField.getDimensionY(); j++) {
             for (int k = 0; k < battleField.getDimensionX(); k++) {
                 if (battleField.scanQuadrant(j, k).equals("B")) {
-                    String coordinates = getQuadrantXY(j + 1, k + 1);
+                    String coordinates = getQuadrantYX(j + 1, k + 1);
                     int separator = coordinates.indexOf("_");
                     int y = Integer.parseInt(coordinates.substring(0, separator));
                     int x = Integer.parseInt(coordinates.substring(separator + 1));

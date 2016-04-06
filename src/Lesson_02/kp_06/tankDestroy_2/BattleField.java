@@ -73,5 +73,6 @@ public class BattleField {
         }
         coord = freeCells[num];
         return coord;
+//        return "0_64";
     }
 }
