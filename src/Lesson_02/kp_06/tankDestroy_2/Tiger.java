@@ -1,4 +1,4 @@
-package Lesson_02.kp_06.tanksGame;
+package Lesson_02.kp_06.tankDestroy_2;
 
 /**
  * Created by Юрий on 27.02.2016.

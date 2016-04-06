@@ -1,4 +1,4 @@
-package Lesson_02.kp_06.tanksGame;
+package Lesson_02.kp_06.tanksGame_1;
 
 /**
  * Created by Юрий on 12.02.2016.
