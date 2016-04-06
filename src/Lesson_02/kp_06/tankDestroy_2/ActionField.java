@@ -90,7 +90,10 @@ public class ActionField extends JPanel {
     }
 
     public void runTheGame() throws Exception {
-
+        defender.fire();
+        defender.fire();
+        defender.fire();
+        defender.fire();
 
     }
 

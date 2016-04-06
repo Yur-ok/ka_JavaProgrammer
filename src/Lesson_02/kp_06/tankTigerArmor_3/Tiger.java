@@ -21,9 +21,8 @@ public class Tiger extends Tank {
     public void destroy() {
         if (armor > 0) {
             armor--;
-        } else if (armor == 0) {
-            x = -100;
-            y = -100;
+        } else {
+            super.destroy();
         }
     }
 }
