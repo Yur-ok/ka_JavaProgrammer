@@ -1,4 +1,4 @@
-package Lesson_02.kp_06.tankDestroy_2;
+package Lesson_02.kp_06.tankTigerArmor_3;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package Lesson_02.kp_06.tankDestroy_2;
+package Lesson_02.kp_06.tankTigerArmor_3;
 
 /**
  * Created by Юрий on 12.02.2016.

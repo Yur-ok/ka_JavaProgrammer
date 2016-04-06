@@ -1,4 +1,4 @@
-package Lesson_02.kp_06.tankDestroy_2;
+package Lesson_02.kp_06.tankTigerArmor_3;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ public class ActionField extends JPanel {
     private final boolean COLORDED_MODE = false;
     private BattleField battleField;
     private Tank defender;
-    private Tank aggressor;
+    private Tiger aggressor;
     private Bullet bullet;
     private int amountOfBriks;
 
@@ -90,7 +90,11 @@ public class ActionField extends JPanel {
     }
 
     public void runTheGame() throws Exception {
-
+        defender.fire();
+        defender.fire();
+        defender.fire();
+        defender.fire();
+        defender.fire();
 
     }
 
@@ -266,11 +270,11 @@ public class ActionField extends JPanel {
         defender = new Tank(this, battleField);
 
         String location = battleField.getAggressorLocation();
-        aggressor = new Tank(this, battleField, Integer.parseInt(location.split("_")[1]),
+        aggressor = new Tiger(this, battleField, Integer.parseInt(location.split("_")[1]),
                 Integer.parseInt(location.split("_")[0]), Direction.DOWN);
         bullet = new Bullet(-100, -100, Direction.NONE);
 
-        JFrame frame = new JFrame("BATTLE FIELD, DAY 2");
+        JFrame frame = new JFrame("Tiger Armor check");
         frame.setLocation(750, 150);
         frame.setMinimumSize(new Dimension(battleField.getBF_WIDTH() + 16, battleField.getBF_HEIGHT() + 39));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
