@@ -6,7 +6,7 @@ package Lesson_03.kp_02.shape;
 public class Launcher {
     public static void main(String[] args) {
 
-        Shape[] shapesss = {new Circle(), new Triangle(), new Rectangle()};
+        Shape[] shapesss = {new Circle(), new Triangle(), new Rectangle(), new Square()};
         ShapesTemplate shtemp = new ShapesTemplate(shapesss);
 
     }
