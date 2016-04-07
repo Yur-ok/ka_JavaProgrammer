@@ -121,12 +121,10 @@ public class ActionField extends JPanel {
         }
 
         //check defender
-/*
         if (checkInterception(getQuadrant(defender.getX(), defender.getY()), bulletCoord)) {
             defender.destroy();
             return true;
         }
-*/
         return false;
     }
 
