@@ -3,11 +3,11 @@ package Lesson_03.kp_03.shape;
 import javax.swing.*;
 import java.awt.*;
 
-public class ShapesTemplate extends JPanel implements Drawable {
+public class ShapesTemplate extends JPanel {
 
-    private AbstractShape[] shapes;
+    private Drawable[] shapes;
 
-    public ShapesTemplate(AbstractShape[] shapes) {
+    public ShapesTemplate(Drawable[] shapes) {
         this.shapes = shapes;
         if (shapes == null || shapes.length < 1) {
             this.shapes = new AbstractShape[0];
@@ -26,13 +26,9 @@ public class ShapesTemplate extends JPanel implements Drawable {
 
     @Override
     protected void paintComponent(Graphics g) {
-        for (AbstractShape s : shapes) {
+        for (Drawable s : shapes) {
             s.draw(g);
         }
     }
 
-    @Override
-    public void draw(Graphics g) {
-
-    }
 }

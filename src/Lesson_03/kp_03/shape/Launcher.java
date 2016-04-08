@@ -6,7 +6,7 @@ package Lesson_03.kp_03.shape;
 public class Launcher {
     public static void main(String[] args) {
 
-        AbstractShape[] shapesss = {new Circle(), new Triangle(), new Rectangle(), new Square()};
+        Drawable[] shapesss = {new Circle(), new Triangle(), new Rectangle(), new Square()};
         new ShapesTemplate(shapesss);
 
     }
