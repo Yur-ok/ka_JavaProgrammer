@@ -1,16 +1,16 @@
-package Lesson_03.kp_02.shape;
+package Lesson_03.kp_03.shape;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ShapesTemplate extends JPanel {
+public class ShapesTemplate extends JPanel implements Drawable {
 
-    private Lesson_03.kp_02.shape.Shape[] shapes;
+    private AbstractShape[] shapes;
 
-    public ShapesTemplate(Lesson_03.kp_02.shape.Shape[] shapes) {
+    public ShapesTemplate(AbstractShape[] shapes) {
         this.shapes = shapes;
         if (shapes == null || shapes.length < 1) {
-            this.shapes = new Lesson_03.kp_02.shape.Shape[0];
+            this.shapes = new AbstractShape[0];
         }
 
         JFrame frame = new JFrame("AbstractShape templates");
@@ -26,8 +26,13 @@ public class ShapesTemplate extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        for (Lesson_03.kp_02.shape.Shape s : shapes) {
+        for (AbstractShape s : shapes) {
             s.draw(g);
         }
+    }
+
+    @Override
+    public void draw(Graphics g) {
+
     }
 }
