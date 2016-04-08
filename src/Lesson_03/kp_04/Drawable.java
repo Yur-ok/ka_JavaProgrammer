@@ -7,5 +7,5 @@ import java.awt.*;
  */
 public interface Drawable {
 
-    void draw(Graphics g, Color tank, Color gun);
+    void draw(Graphics g);
 }

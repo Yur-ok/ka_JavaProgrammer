@@ -318,8 +318,9 @@ public class ActionField extends JPanel {
             }
         }
 
-        defender.draw(g, new Color(34, 255, 18), new Color(255, 40, 0));
-        aggressor.draw(g, new Color(255, 40, 0), new Color(34, 255, 18));
+        defender.draw(g);
+        aggressor.draw(g);
+        bullet.draw(g);
 //        //defender
 //        g.setColor(new Color(34, 255, 18));
 //        g.fillRect(defender.getX(), defender.getY(), 64, 64);
@@ -353,7 +354,6 @@ public class ActionField extends JPanel {
 //        }
 
         //bullet
-        g.setColor(new Color(255, 255, 0));
-        g.fillRect(bullet.getX(), bullet.getY(), 14, 14);
+
     }
 }

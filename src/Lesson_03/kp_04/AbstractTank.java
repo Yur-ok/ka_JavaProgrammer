@@ -30,6 +30,9 @@ public abstract class AbstractTank implements Destroyable, Drawable {
     protected int x;
     protected int y;
     protected int speed = 3; //10
+    protected Color tankColor;
+    protected Color gunColor;
+
     private ActionField af;
     private BattleField bf;
 
@@ -120,13 +123,13 @@ public abstract class AbstractTank implements Destroyable, Drawable {
     }
 
     @Override
-    public void draw(Graphics g, Color tank, Color gun) {
+    public void draw(Graphics g) {
         //defender
-        g.setColor(tank);
+        g.setColor(tankColor);
         g.fillRect(this.getX(), this.getY(), 64, 64);
 
         //this gun
-        g.setColor(gun);
+        g.setColor(gunColor);
         if (this.getDirection() == Direction.UP) {
             g.fillRect(this.getX() + 20, this.getY(), 24, 34);
         } else if (this.getDirection() == Direction.DOWN) {

@@ -1,9 +1,11 @@
 package Lesson_03.kp_04;
 
+import java.awt.*;
+
 /**
  * Created by Юрий on 12.02.2016.
  */
-public class Bullet {
+public class Bullet implements Drawable, Destroyable {
 
     private final int SPEED = 5;
     private int x;
@@ -43,5 +45,11 @@ public class Bullet {
     public void destroy() {
         x = -100;
         y = -100;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(new Color(255, 255, 0));
+        g.fillRect(this.getX(), this.getY(), 14, 14);
     }
 }
