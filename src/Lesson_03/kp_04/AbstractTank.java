@@ -35,7 +35,7 @@ public abstract class AbstractTank {
     }
 
     public AbstractTank(ActionField af, BattleField bf) {
-        this(af, bf, 64, 512, Direction.UP);
+        this(af, bf, 128, 512, Direction.UP);
     }
 
     public AbstractTank(ActionField af, BattleField bf, int x, int y, Direction direction) {

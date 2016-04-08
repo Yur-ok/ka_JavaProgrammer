@@ -3,7 +3,7 @@ package Lesson_03.kp_04;
 /**
  * Created by Юрий on 27.02.2016.
  */
-public class Tiger extends Tank {
+public class Tiger extends AbstractTank {
 
     private int armor;
 

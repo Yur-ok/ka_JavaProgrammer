@@ -16,14 +16,14 @@ public class ActionField extends JPanel {
 
     private final boolean COLORDED_MODE = false;
     private BattleField battleField;
-    private Tank defender;
+    private T34 defender;
     private Tiger aggressor;
     private Bullet bullet;
     private int amountOfBriks;
 
 
     public void processMove(AbstractTank tank) throws Exception {
-        this.defender = tank;
+        this.defender = (T34) tank;
         Direction direction = tank.getDirection();
         int step = 1;
         int covered = 0;
@@ -90,11 +90,6 @@ public class ActionField extends JPanel {
     }
 
     public void runTheGame() throws Exception {
-        defender.fire();
-        defender.fire();
-        defender.fire();
-        defender.fire();
-        defender.fire();
 
     }
 
@@ -183,7 +178,7 @@ public class ActionField extends JPanel {
     }
 
     public void moveToQuadrant(AbstractTank tank, int v, int h) throws Exception {
-        this.defender = tank;
+        this.defender = (T34) tank;
 
         String coordinates = getQuadrantYX(v, h);
         int separator = coordinates.indexOf("_");
@@ -267,7 +262,7 @@ public class ActionField extends JPanel {
     public ActionField() throws Exception {
 
         battleField = new BattleField();
-        defender = new Tank(this, battleField);
+        defender = new T34(this, battleField);
 
         String location = battleField.getAggressorLocation();
         aggressor = new Tiger(this, battleField, Integer.parseInt(location.split("_")[1]),

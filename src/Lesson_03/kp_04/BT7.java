@@ -3,7 +3,7 @@ package Lesson_03.kp_04;
 /**
  * Created by Юрий on 27.02.2016.
  */
-public class BT7 extends Tank {
+public class BT7 extends AbstractTank {
 
     public BT7(ActionField af, BattleField bf) {
         super(af, bf);
