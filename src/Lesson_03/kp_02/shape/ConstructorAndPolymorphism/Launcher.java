@@ -8,6 +8,5 @@ public class Launcher {
         Glyph glyph = new RoundGlyph(10);
         glyph.draw();
         Glyph glyph1 = new Descender();
-//        glyph1.draw();
     }
 }
