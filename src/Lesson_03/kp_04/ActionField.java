@@ -22,7 +22,7 @@ public class ActionField extends JPanel {
     private int amountOfBriks;
 
 
-    public void processMove(Tank tank) throws Exception {
+    public void processMove(AbstractTank tank) throws Exception {
         this.defender = tank;
         Direction direction = tank.getDirection();
         int step = 1;
@@ -62,7 +62,7 @@ public class ActionField extends JPanel {
         }
     }
 
-    public void processTurn(Tank tank) throws Exception {
+    public void processTurn(AbstractTank tank) throws Exception {
         repaint();
     }
 
@@ -182,7 +182,7 @@ public class ActionField extends JPanel {
         }
     }
 
-    public void moveToQuadrant(Tank tank, int v, int h) throws Exception {
+    public void moveToQuadrant(AbstractTank tank, int v, int h) throws Exception {
         this.defender = tank;
 
         String coordinates = getQuadrantYX(v, h);
