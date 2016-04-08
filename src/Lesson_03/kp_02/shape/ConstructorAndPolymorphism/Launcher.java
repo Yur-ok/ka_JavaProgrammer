@@ -7,7 +7,7 @@ public class Launcher {
     public static void main(String[] args) {
         Glyph glyph = new RoundGlyph(10);
         glyph.draw();
-        Glyph desc = new Descender();
-        desc.draw();
+        Glyph glyph1 = new Descender();
+//        glyph1.draw();
     }
 }
