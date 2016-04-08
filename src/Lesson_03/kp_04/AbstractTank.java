@@ -1,9 +1,11 @@
 package Lesson_03.kp_04;
 
+import java.awt.*;
+
 /**
  * Created by Юрий on 12.02.2016.
  */
-public abstract class AbstractTank {
+public abstract class AbstractTank implements Destroyable, Drawable {
 
     private String color;
     private int crew;
@@ -35,7 +37,8 @@ public abstract class AbstractTank {
     }
 
     public AbstractTank(ActionField af, BattleField bf) {
-        this(af, bf, 128, 512, Direction.UP);
+        this.af = af;
+        this.bf = bf;
     }
 
     public AbstractTank(ActionField af, BattleField bf, int x, int y, Direction direction) {
@@ -93,10 +96,10 @@ public abstract class AbstractTank {
         this.y += y;
     }
 
-    @Override
-    public String toString() {
-        return "Tank has next parameters: \nColor = " + getColor() + "\nSpeed = " + getSpeed() + "\nCrew = " + getCrew();
-    }
+//    @Override
+//    public String toString() {
+//        return "Tank has next parameters: \nColor = " + getColor() + "\nSpeed = " + getSpeed() + "\nCrew = " + getCrew();
+//    }
 
     public void setSpeed(int speed) {
         this.speed = speed;
@@ -114,5 +117,24 @@ public abstract class AbstractTank {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public void draw(Graphics g, Color tank, Color gun) {
+        //defender
+        g.setColor(tank);
+        g.fillRect(this.getX(), this.getY(), 64, 64);
+
+        //this gun
+        g.setColor(gun);
+        if (this.getDirection() == Direction.UP) {
+            g.fillRect(this.getX() + 20, this.getY(), 24, 34);
+        } else if (this.getDirection() == Direction.DOWN) {
+            g.fillRect(this.getX() + 20, this.getY() + 30, 24, 34);
+        } else if (this.getDirection() == Direction.LEFT) {
+            g.fillRect(this.getX(), this.getY() + 20, 34, 24);
+        } else {
+            g.fillRect(this.getX() + 30, this.getY() + 20, 34, 24);
+        }
     }
 }
