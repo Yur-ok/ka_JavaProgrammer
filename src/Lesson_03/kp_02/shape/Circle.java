@@ -6,10 +6,14 @@ import java.awt.*;
  * Created by Юрий on 07.04.2016.
  */
 public class Circle extends Shape {
+    public Circle() {
+    }
+
     @Override
     public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(10));
+        g.setColor(new Color(0, 0, 0));
         g.drawOval(30, 30, 100, 100);
         g.setColor(new Color(255, 189, 61));
         g.fillOval(30, 30, 100, 100);

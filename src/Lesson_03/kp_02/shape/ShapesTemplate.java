@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ShapesTemplate extends JPanel {
 
-    private Lesson_03.kp_02.shape.Shape[] shapes;
+    private Shape[] shapes;
 
     public ShapesTemplate(Lesson_03.kp_02.shape.Shape[] shapes) {
         this.shapes = shapes;

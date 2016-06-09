@@ -13,6 +13,4 @@ public abstract class AbstractShape implements Drawable {
     public Color getColor() {
         return color;
     }
-
-
 }

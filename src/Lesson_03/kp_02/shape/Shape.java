@@ -11,6 +11,4 @@ public class Shape {
         throw new IllegalStateException("Override this method.");
     }
 
-    public void draw() {
-    }
 }
