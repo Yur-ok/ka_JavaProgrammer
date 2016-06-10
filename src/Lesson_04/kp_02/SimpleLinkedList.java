@@ -1,17 +1,15 @@
 package Lesson_04.kp_02;
 
-import Lesson_01.kp_02.frame_15.rigth_Oleg.Object;
-
 /**
  * Created by Юрий on 10.06.2016.
  */
-public class SimpleLinkedList extends Node {
+public class SimpleLinkedList {
     private Node root;
     private int size;
 
-    class Node {
-        private Object o;
-        private Lesson_04.kp_02.Node node;
+    private class Node {
+        Object obj;
+        Node node;
     }
 
     public SimpleLinkedList() {
@@ -19,7 +17,10 @@ public class SimpleLinkedList extends Node {
     }
 
     public void addFirst(Object o) {
-
+        Node n = new Node();
+        n.obj = new Object();
+        n.node = getRoot();
+        setRoot(n);
     }
 
     public void addLast(Object o) {
@@ -34,4 +35,11 @@ public class SimpleLinkedList extends Node {
         return size;
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node root) {
+        this.root = root;
+    }
 }
