@@ -29,6 +29,9 @@ public class SimpleLinkedList {
 
     public void addLast(Object o) {
 
+        Node n = new Node();
+        n.obj = o;
+        size++;
     }
 
     public void addAfter(Object o, Object prev) {
