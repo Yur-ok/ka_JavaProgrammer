@@ -14,11 +14,12 @@ public class Student {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
+        if (obj instanceof Student) { //проверяем тип объекта, который мы получили. Если объект другого типа (false) если объект null будет тоже (false).
+            Student s = (Student) obj;
+            if (name != null && name.equals(s.getName()) &&
+                    secondName != null && secondName.equals(s.getSecondName())) {
+                return true;
+            }
         }
         return false;
     }
