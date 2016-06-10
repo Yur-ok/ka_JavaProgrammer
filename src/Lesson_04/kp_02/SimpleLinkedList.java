@@ -9,7 +9,7 @@ public class SimpleLinkedList {
 
     private class Node {
         Object obj;
-        Node node;
+        Node ref;
     }
 
     public SimpleLinkedList() {
@@ -18,9 +18,13 @@ public class SimpleLinkedList {
 
     public void addFirst(Object o) {
         Node n = new Node();
-        n.obj = new Object();
-        n.node = getRoot();
-        setRoot(n);
+        n.obj = o;
+
+        if (root != null) {
+            n.ref = root;
+        }
+        root = n;
+        size++;
     }
 
     public void addLast(Object o) {
@@ -33,13 +37,5 @@ public class SimpleLinkedList {
 
     public int getSize() {
         return size;
-    }
-
-    public Node getRoot() {
-        return root;
-    }
-
-    public void setRoot(Node root) {
-        this.root = root;
     }
 }
