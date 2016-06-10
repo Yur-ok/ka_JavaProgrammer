@@ -9,6 +9,11 @@ public class SimpleLinkedList extends Node {
     private Node root;
     private int size;
 
+    class Node {
+        private Object o;
+        private Lesson_04.kp_02.Node node;
+    }
+
     public SimpleLinkedList() {
         size = 0;
     }
@@ -28,4 +33,5 @@ public class SimpleLinkedList extends Node {
     public int getSize() {
         return size;
     }
+
 }
