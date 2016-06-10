@@ -9,6 +9,10 @@ public class SimpleLinkedList extends Node {
     private Node root;
     private int size;
 
+    public SimpleLinkedList() {
+        size = 0;
+    }
+
     public void addFirst(Object o) {
 
     }
@@ -17,7 +21,7 @@ public class SimpleLinkedList extends Node {
 
     }
 
-    public void addAfter(Object o) {
+    public void addAfter(Object o, Object prev) {
 
     }
 
