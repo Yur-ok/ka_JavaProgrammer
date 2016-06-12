@@ -1,15 +1,37 @@
 package Lesson_04.kp_02;
 
+import Lesson_01.kp_02.frame_15.rigth_Oleg.Object;
+
+import java.util.Iterator;
+
 /**
  * Created by Юрий on 10.06.2016.
  */
-public class SimpleLinkedList {
+public class SimpleLinkedList implements Iterable {
     private Node root;
     private int size;
+
+    @Override
+    public Iterator iterator() {
+        return (Iterator) new SLLItetator();
+    }
 
     private class Node {
         Object obj;
         Node ref;
+    }
+
+    private class SLLItetator {
+        public Object next() {
+            return root.obj;
+        }
+
+        public boolean hasNext() {
+            if (root.ref != null) {
+                return true;
+            }
+            return false;
+        }
     }
 
     public SimpleLinkedList() {
@@ -43,7 +65,7 @@ public class SimpleLinkedList {
                 last = cp;
                 cp = cp.ref;
             }
-            last.ref = n;
+            cp.ref = n;
         }
         size++;
     }
@@ -75,5 +97,19 @@ public class SimpleLinkedList {
 
     public int getSize() {
         return size;
+    }
+
+    public void printList() {
+        if (size == 0) {
+            System.out.println("List is empty");
+        }
+        System.out.print("{");
+        Node cp = root;
+        while (cp.ref != null) {
+            System.out.print(cp.obj + ", ");
+            cp = cp.ref;
+        }
+        System.out.print(cp.obj);
+        System.out.println("}");
     }
 }

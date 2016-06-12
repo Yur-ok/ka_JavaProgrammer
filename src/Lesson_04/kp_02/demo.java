@@ -12,6 +12,7 @@ public class demo {
 //        System.out.println(sl.getSize());
         sl.addLast(new String("Last"));
 //        System.out.println(sl.getSize());
+        sl.printList();
     }
 
 }
