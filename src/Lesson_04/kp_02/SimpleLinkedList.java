@@ -7,13 +7,13 @@ import java.util.Iterator;
 /**
  * Created by Юрий on 10.06.2016.
  */
-public class SimpleLinkedList implements Iterable {
+public class SimpleLinkedList implements Iterable<Object> {
     private Node root;
     private int size;
 
     @Override
-    public Iterator iterator() {
-        return (Iterator) new SLLItetator();
+    public Iterator<Object> iterator() {
+        return new SLLItetator();
     }
 
     private class Node {
@@ -21,16 +21,34 @@ public class SimpleLinkedList implements Iterable {
         Node ref;
     }
 
-    private class SLLItetator {
-        public Object next() {
-            return root.obj;
+    private class SLLItetator implements Iterator<Object> {
+        private Node cp;
+
+        public SLLItetator() {
+
         }
 
-        public boolean hasNext() {
-            if (root.ref != null) {
-                return true;
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public Object next() {
+            if (cp == null && root != null) {
+                cp = root;
+                return cp.obj;
             }
-            return false;
+            if (hasNext()) {
+                cp = cp.ref;
+                return cp.obj;
+            }
+            throw new IllegalStateException("list has no more elements");
+        }
+
+        @Override
+        public boolean hasNext() {
+            return (cp == null && root != null) || (cp != null && cp.ref != null);
         }
     }
 
