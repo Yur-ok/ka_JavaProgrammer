@@ -49,22 +49,28 @@ public class SimpleLinkedList {
     }
 
     public void addAfter(Object o, Object prev) {
+        Node prevPoint = null;
+        Node cp = root;
+
+        do {
+            if (cp.obj == prev) {
+                prevPoint = cp;
+                break;
+            }
+            cp = cp.ref;
+        } while (cp != null && cp.ref != null);
+
+        if (prevPoint == null) {
+            throw new IllegalStateException("List does not contain prev object");
+        }
         Node n = new Node();
         n.obj = o;
-        if (root == null) {
-            root = n;
+
+        if (prevPoint.ref != null) {
+            n.ref = prevPoint.ref;
         }
-        if (getSize() == 1) {
-            addFirst(o);
-        }
-        Node cp = root;
-        Node next = root;
-        while (cp.obj != prev) {
-            next = cp;
-            cp = cp.ref;
-        }
-        n.ref = cp;
-        cp.ref = n;
+        prevPoint.ref = n;
+        size++;
     }
 
     public int getSize() {
