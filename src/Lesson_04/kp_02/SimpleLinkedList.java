@@ -28,9 +28,24 @@ public class SimpleLinkedList implements Iterable<Object> {
 
         }
 
-        @Override
-        public void remove() {
+        public void remove(Object o) {
+            Node prev = null;
+            Node search = null;
+            Node cp = root;
 
+            while (cp.obj != o) {
+                prev = cp;
+                cp = cp.ref;
+            }
+
+            search = cp;
+            System.out.println(search.obj);
+
+            prev.ref = cp.ref;
+            cp.ref = null;
+            cp.obj = null;
+
+            size--;
         }
 
         @Override
@@ -59,14 +74,11 @@ public class SimpleLinkedList implements Iterable<Object> {
     public void addFirst(Object o) {
         Node n = new Node();
         n.obj = o;
-//        System.out.println(n.obj);
 
         if (root != null) {
             n.ref = root;
         }
-//        System.out.println(n.ref);
         root = n;
-//        System.out.println("Root: " + root.obj + " " + root.ref);
         size++;
     }
 
