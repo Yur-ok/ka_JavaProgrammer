@@ -22,29 +22,32 @@ public class SimpleLinkedList implements Iterable<Object> {
     }
 
     private class SLLItetator implements Iterator<Object> {
+        private Node prev;
         private Node cp;
 
         public SLLItetator() {
 
         }
 
-        public void remove(Object o) {
-            Node prev = null;
-            Node search = null;
-            Node cp = root;
-
-            while (cp.obj != o) {
-                prev = cp;
+        @Override
+        public void remove() {
+            if (!hasNext() && prev == null) {
+                // only one element
+                cp = null;
+                root = null;
+            } else if (!hasNext() && prev != null) {
+                //last element
+                prev.ref = null;
+                cp = null;
+            } else if (hasNext() && prev == null) {
+                //first element
+                root = cp.ref;
+                cp = root;
+            } else {
+                //middle element
+                prev.ref = cp.ref;
                 cp = cp.ref;
             }
-
-            search = cp;
-            System.out.println(search.obj);
-
-            prev.ref = cp.ref;
-            cp.ref = null;
-            cp.obj = null;
-
             size--;
         }
 
@@ -55,6 +58,7 @@ public class SimpleLinkedList implements Iterable<Object> {
                 return cp.obj;
             }
             if (hasNext()) {
+                prev = cp;
                 cp = cp.ref;
                 return cp.obj;
             }
