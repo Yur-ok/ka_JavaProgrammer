@@ -1,7 +1,5 @@
 package Lesson_04.kp_02;
 
-import Lesson_01.kp_02.frame_15.rigth_Oleg.Object;
-
 import java.util.Iterator;
 
 /**
@@ -32,7 +30,7 @@ public class SimpleLinkedList implements Iterable<Object> {
         @Override
         public void remove() {
             if (!hasNext() && prev == null) {
-                // only one element
+                //only one element
                 cp = null;
                 root = null;
             } else if (!hasNext() && prev != null) {
